@@ -66,6 +66,7 @@ def get_passwords():
 
 
 @passwords_bp.route("/passwords", methods=["POST"])
+@cross_origin(origins="*", allow_headers=["Content-Type", "Authorization"])
 def add_password():
     email, _ = get_user_info()
     if not email:
@@ -103,6 +104,7 @@ def add_password():
     return jsonify({"message": "Hasło zapisane"}), 201
 
 @passwords_bp.route("/passwords/<int:id>", methods=["PUT"])
+@cross_origin(origins="*", allow_headers=["Content-Type", "Authorization"])
 def update_password(id):
     email, _ = get_user_info()
     if not email:
@@ -141,6 +143,7 @@ def update_password(id):
     return jsonify({"message": "Hasło zaktualizowane"}), 200
 
 @passwords_bp.route("/passwords/<int:id>", methods=["DELETE"])
+@cross_origin(origins="*", allow_headers=["Content-Type", "Authorization"])
 def delete_password(id):
     email, _ = get_user_info()
     if not email:
