@@ -1,0 +1,5 @@
+.idea/
+backend/.venv/
+backend/database.db
+backend/passwords.db
+backend/website/static/templates/__init__.py
