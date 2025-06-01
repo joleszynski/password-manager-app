@@ -460,9 +460,25 @@ function togglePasswordVisibility(button) {
 }
 
 function setLoadingState(formType, isLoading) {
-    const btnText = document.getElementById(`${formType}-btn-text`);
-    const spinner = document.getElementById(`${formType}-spinner`);
-    const form = document.getElementById(`${formType}-form-element`) || document.getElementById(`${formType}-form`);
+    let btnText, spinner, form;
+
+    if (formType === 'modal') {
+        // Handle modal form specifically
+        btnText = document.getElementById('modal-btn-text');
+        spinner = document.getElementById('modal-spinner');
+        form = document.getElementById('password-modal-form');
+    } else {
+        // Handle regular forms (login/register)
+        btnText = document.getElementById(`${formType}-btn-text`);
+        spinner = document.getElementById(`${formType}-spinner`);
+        form = document.getElementById(`${formType}-form-element`);
+    }
+
+    // Check if elements exist before manipulating them
+    if (!btnText || !spinner || !form) {
+        console.warn(`Loading state elements not found for ${formType}`);
+        return;
+    }
 
     if (isLoading) {
         btnText.classList.add('hidden');
