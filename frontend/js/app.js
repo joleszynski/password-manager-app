@@ -161,41 +161,41 @@ function renderPasswords(passwords) {
 
     if (passwords.length === 0) {
         passwordList.innerHTML = `
-                    <div class="text-center" style="padding: var(--space-16);">
-                        <div style="font-size: 4rem; margin-bottom: var(--space-4);">🔐</div>
-                        <h3 style="margin-bottom: var(--space-2);">No passwords yet</h3>
-                        <p style="color: var(--secondary-600); margin-bottom: var(--space-6);">Add your first password to get started</p>
-                        <button class="btn btn-primary" onclick="showAddPasswordForm()">Add Password</button>
-                    </div>
-                `;
+            <div class="text-center" style="padding: var(--space-16);">
+                <div style="font-size: 4rem; margin-bottom: var(--space-4);">🔐</div>
+                <h3 style="margin-bottom: var(--space-2);">No passwords yet</h3>
+                <p style="color: var(--secondary-600); margin-bottom: var(--space-6);">Add your first password to get started</p>
+                <button class="btn btn-primary" onclick="showAddPasswordForm()">Add Password</button>
+            </div>
+        `;
         return;
     }
 
     passwordList.innerHTML = passwords.map(password => `
-                <div class="password-item">
-                    <div class="password-item-header">
-                        <div class="password-item-info">
-                            <h3>${escapeHtml(password.site)}</h3>
-                            <p>${escapeHtml(password.login)}</p>
-                        </div>
-                        <div class="password-item-actions">
-                            <button class="btn btn-secondary btn-small" onclick="copyPassword('${escapeHtml(password.password)}')">
-                                📋 Copy
-                            </button>
-                            <button class="btn btn-secondary btn-small" onclick="editPassword(${password.id})">
-                                ✏️ Edit
-                            </button>
-                            <button class="btn btn-danger btn-small" onclick="deletePassword(${password.id})">
-                                🗑️ Delete
-                            </button>
-                        </div>
-                    </div>
-                    <div class="password-field">
-                        <input type="password" value="${escapeHtml(password.password)}" readonly>
-                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)">👁️</button>
-                    </div>
+        <div class="password-item">
+            <div class="password-item-header">
+                <div class="password-item-info">
+                    <h3>${escapeHtml(password.site)}</h3>
+                    <p>${escapeHtml(password.login)}</p>
                 </div>
-            `).join('');
+                <div class="password-item-actions">
+                    <button class="btn btn-secondary btn-small" onclick="copyPassword('${escapeHtml(password.password)}', this)">
+                        📋 Copy
+                    </button>
+                    <button class="btn btn-secondary btn-small" onclick="editPassword(${password.id})">
+                        ✏️ Edit
+                    </button>
+                    <button class="btn btn-danger btn-small" onclick="deletePassword(${password.id})">
+                        🗑️ Delete
+                    </button>
+                </div>
+            </div>
+            <div class="password-field">
+                <input type="password" value="${escapeHtml(password.password)}" readonly>
+                <button type="button" class="password-toggle" onclick="togglePasswordVisibility(this)">👁️</button>
+            </div>
+        </div>
+    `).join('');
 }
 
 function handleSearch(e) {
@@ -399,21 +399,20 @@ function generatePassword() {
     document.getElementById('modal-password').value = password;
 }
 
-async function copyPassword(password) {
+async function copyPassword(password, buttonElement) {
     try {
         await navigator.clipboard.writeText(password);
 
         // Show temporary success feedback
-        const button = event.target;
-        const originalText = button.innerHTML;
-        button.innerHTML = '✅ Copied!';
-        button.style.background = 'var(--success-500)';
-        button.style.color = 'white';
+        const originalText = buttonElement.innerHTML;
+        buttonElement.innerHTML = '✅ Copied!';
+        buttonElement.style.background = 'var(--success-500)';
+        buttonElement.style.color = 'white';
 
         setTimeout(() => {
-            button.innerHTML = originalText;
-            button.style.background = '';
-            button.style.color = '';
+            buttonElement.innerHTML = originalText;
+            buttonElement.style.background = '';
+            buttonElement.style.color = '';
         }, 2000);
     } catch (error) {
         alert('Failed to copy password to clipboard');
