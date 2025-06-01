@@ -315,7 +315,15 @@ function createPasswordModal(existingPassword = null) {
         const login = document.getElementById('modal-login').value;
         const password = document.getElementById('modal-password').value;
 
-        setLoadingState('modal', true);
+        // Instead of setLoadingState('modal', true), use direct manipulation:
+        const btnText = document.getElementById('modal-btn-text');
+        const spinner = document.getElementById('modal-spinner');
+        const form = document.getElementById('password-modal-form');
+
+        // Set loading state directly
+        btnText.classList.add('hidden');
+        spinner.classList.remove('hidden');
+        form.querySelectorAll('input, button').forEach(el => el.disabled = true);
 
         try {
             const url = isEdit ? `${API_BASE}/passwords/${existingPassword.id}` : `${API_BASE}/passwords`;
@@ -340,7 +348,10 @@ function createPasswordModal(existingPassword = null) {
         } catch (error) {
             alert('Error saving password');
         } finally {
-            setLoadingState('modal', false);
+            // Reset loading state directly
+            btnText.classList.remove('hidden');
+            spinner.classList.add('hidden');
+            form.querySelectorAll('input, button').forEach(el => el.disabled = false);
         }
     });
 
