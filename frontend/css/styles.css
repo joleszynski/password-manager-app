@@ -240,11 +240,55 @@ body {
     color: var(--secondary-500);
     padding: var(--space-2);
     border-radius: var(--radius-sm);
+    z-index: 1;
 }
 
 .password-toggle:hover {
     color: var(--secondary-700);
     background: var(--secondary-100);
+}
+
+/* Password Field - FIXED VERSION */
+.password-field {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    background: var(--secondary-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--secondary-200);
+    position: relative; /* Add this */
+}
+
+.password-field input {
+    flex: 1;
+    border: none;
+    background: none;
+    font-family: 'Courier New', monospace;
+    font-size: var(--font-size-sm);
+    padding-right: var(--space-8); /* Add padding to make room for the button */
+}
+
+.password-field input:focus {
+    outline: none;
+}
+
+/* Fix the password toggle specifically for password-field */
+.password-field .password-toggle {
+    position: absolute;
+    right: var(--space-2);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary-500);
+    padding: var(--space-1);
+    border-radius: var(--radius-sm);
+    z-index: 2;
+    width: auto;
+    height: auto;
+    min-height: unset;
 }
 
 /* Cards */
