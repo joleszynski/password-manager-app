@@ -4,3 +4,4 @@ backend/database.db
 backend/passwords.db
 backend/website/static/templates/__init__.py
 ./example_accounts.md
+backend/website/static/templates/__pycache__/

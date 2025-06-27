@@ -1,12 +1,12 @@
-# Hasełka - aplikacja do bezpiecznego przechowywania haseł
+# SecureVault - Password Manager aka Hasełka - aplikacja do bezpiecznego przechowywania haseł
 
 ## Opis
 
 Jest to prosta aplikacja do zarządzania zaszyfrowanymi hasłami.
 
-Aplikacja napisana jest w:
-- Backend: Pythonie z użyciem Flask, która korzysta z dwóch plikowych baz danych SQLite.
-- Frontend: Vanilla JS.
+Użyte technologie do napisania aplikacji:
+- Backend: Python z użyciem Flask, która korzysta z dwóch plikowych baz danych SQLite.
+- Frontend: Vanilla JS, która tak naprawdę działa na jednym pliku .js.
 
 ### Funkcjonalności
 
@@ -20,19 +20,48 @@ Aplikacja napisana jest w:
 ### 1. Instalacja wymaganych bibliotek
 
 ```bash
-pip install flask flask-cors pyjwt bcrypt cryptography
+# Utwórz środowisko wirtualne
+python -m venv nazwa_srodowiska
+
+# Komenda dla Windows Command Prompt
+nazwa_srodowiska\Scripts\activate
+
+# Komenda dla Windows PowerShell
+nazwa_srodowiska\Scripts\Activate.ps1
+
+# Komenda dla Git Bash
+source nazwa_srodowiska/Scripts/activate
+
+# Komenda dla macOS / Linux
+source nazwa_srodowiska/bin/activate
+
+# Zainstaluj biblioteki
+pip install -r requirements.txt
+
+# Uruchom aplikacje
+python main,py
 ```
 
 ### 2. Struktura plików
 
 Upewnij się, że masz pliki:
 
-- `main.py`
-- folder z backendem, np. `website/static/templates/`, w nim pliki:
-	- `__init__.py`
-	- `models.py`
-	- `auth.py`
-	- `passwords.py`
+- `password-maanager-app`
+  - `backend`
+    - `main.py`
+    - `requirements.txt`
+    - `website/static/templates/`
+        - `__init__.py`
+        - `models.py`
+        - `auth.py`
+        - `passwords.py`
+  - `frontend`
+    - `index.html`
+    - `js`
+      - `app.js`
+    - `css`
+      - `styles.css`
+
 
 ### 3. Uruchomienie backend
 
