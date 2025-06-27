@@ -8,7 +8,7 @@ CORS(
     resources={r"/api/*": {"origins": "*"}},
     allow_headers=["Content-Type", "Authorization"],
     expose_headers=["Authorization"],
-    supports_credentials=False      # change to True if you later use cookies
+    supports_credentials=False
 )
 
 if __name__ == "__main__":
