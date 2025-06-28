@@ -17,7 +17,7 @@ Użyte technologie do napisania aplikacji:
 
 ## Jak uruchomić?
 
-### 1. Instalacja wymaganych bibliotek
+### 1. Instalacja wymaganych bibliotek i uruchomienie backend
 
 ```bash
 # Utwórz środowisko wirtualne
@@ -42,7 +42,10 @@ pip install -r requirements.txt
 python main,py
 ```
 
-### 2. Struktura plików
+### 2. Uruchomienie frontend
+Wklej ścieżkę absolutną do pliku index.html w przeglądarce.
+
+### 3. Struktura plików
 
 Upewnij się, że masz pliki:
 
@@ -61,16 +64,6 @@ Upewnij się, że masz pliki:
       - `app.js`
     - `css`
       - `styles.css`
-
-
-### 3. Uruchomienie backend
-
-```bash
-python main.py
-```
-
-### 4. Uruchomienie frontend
-Wklej ścieżkę absolutną do pliku index.html w przeglądarce.
 
 ## Endpointy
 

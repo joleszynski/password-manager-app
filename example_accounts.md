@@ -7,7 +7,7 @@
 - **Login**: testowe@dwa.com
 - **Password**: Testowe2#
 
-### Logins
+### Passwords
 #### Login 1
 - ***Email***: jan.kowalski@gmail.com
 - ***Domain***: https://www.facebook.com
